@@ -1,0 +1,49 @@
+<%- include('parts/html_head') %>
+<%- include('parts/navbar') %>
+<div class="indexPage">
+    <div class="containter">
+            <table class="table table-striped">
+                    <thead class="thead-dark">
+                      <tr>
+                        <th scope="col">Product Name</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">USD</th>
+                        <th scope="col">Total</th>
+                        <th scope="col"><i class="fas fa-trash-alt"></i></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        <% total=0 %>
+                        <% if(!locals.rows){ %>
+                            <tr>
+                                <td colspan="5" style="text-align: center; font-size: 30px;">Empty</td>
+                            </tr>
+                            <% } else { %>
+                        <% for(i=0; i<rows.length; i++){ %>
+                            <% total += rows[i].vendor_price * data[Object.keys(data)[i]] %>
+                       <tr>
+                        <th scope="row" id="here" value="<%= rows[i].product_name %>"><%= rows[i].product_name %></th>
+                        <td><%= data[Object.keys(data)[i]] %></td>
+                        <td><%= rows[i].vendor_price %></td>
+                        <td><%= rows[i].vendor_price * data[Object.keys(data)[i]] %></td>
+                        <td><a href="javascript: delete1(<%= Object.keys(data)[i] %>)"><i class="fas fa-trash-alt"></i></a></td>                        
+                      </tr>                     
+                      <% }} %>                      
+                      <tr>
+                            <td colspan="5" style="text-align: right; font-weight: bold; font-size: 25px;">Total Amount: <%= total %></td>
+                        </tr>                    
+                      <tbody>          
+        </table>
+    </div>
+</div>
+<%- include('parts/scripts') %>
+<script>
+function delete1(goodId){
+    removeitem = `good_id=${$('#here').val()}`
+        $.post('/remove', removeitem, function (data) {
+            console.log(data);
+        }, 'json');
+        return false;
+}    
+</script>
+<%- include('parts/html_foot') %>

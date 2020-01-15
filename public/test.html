@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!--Start:插入jQuery-->
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="fontawesome/css/all.css">
+    <link href="https://fonts.googleapis.com/css?family=Maven+Pro|Montserrat&display=swap" rel="stylesheet">
+    <script src="lib/jquery-3.4.1.js"></script>
+    <script src="bootstrap/js/bootstrap.js"></script>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <button type="button" id="sdf">12312312</button>
+
+    <script>
+        $('#sdf').on('click',tests)
+
+        function tests() {
+            console.log('in the func')
+            itemToCart = "item1=1&qu=2"
+            $.post('/test', itemToCart, function (data) {
+                console.log(data);
+            }, 'json');
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,83 @@
+<div class="indexPage indexBackColor">
+    <div class="indexTop">RESTOCKS ARE EVERY MONDAY (ANNOUNCED 24 HOURS PRIOR ON INSTAGRAM)
+    </div>
+</div>
+<nav class="navbar navbar-expand-lg navbar-light bg-light navbar-fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><img src="/images/honeycomb.png" style="height: 40px; width: 40px;"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">PoohFavor<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/main">Products</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="/#aboutUs">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/#contactUs">Contact</a>
+                </li>
+                <!-- <li class="nav-item">
+                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                </li> -->
+                <li class="nav-item">
+                    <form class="form-inline my-2 my-lg-0">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-warning my-2 my-sm-0" type="submit">Search</button>
+                    </form>
+                </li>
+            </ul>
+            <!-- line icon出現時，width改為200px -->
+            <div class="form-inline my-2 my-lg-0" style="width: 200px;">
+                <% if(locals.loginUser){ %>
+                    <div class="navbar-nav mr-auto" style="font-size: 18px;"><a href="/members"><%= loginUser %></a></div>
+                    <div class="navbar-nav mr-auto"><a href="/logout" title="Logout"><i class="fas fa-door-open"></i></a></div>
+                    <% } else { %>
+                <div class="navbar-nav mr-auto"><a href="/login">Login</a></div>
+                        <% } %>
+                <div class="navbar-nav mr-auto"><a href="https://www.facebook.com/PoohFavor/"><i class="fab fa-facebook-square"></i></a></div>
+                <div class="navbar-nav mr-auto"><a href="https://instagram.com/poohfavor?igshid=1snk9iiyp8etw"><i class="fab fa-instagram"></i></a></div>
+                <div class="dropdown">
+                        <a class="navbar-nav nav-link" href="#" id="navbarDropdown" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fab fa-line"></i>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <img class="dropdown-item" src="/images/lineQRCode.png" style="height: auto; width: auto;">
+                        </div>
+                    </div>
+                    <div class="navbar-nav mr-auto"><a href="/cart"><i class="fas fa-shopping-cart"></i></a></div>
+                <!-- <div class="dropdown">
+                    <a class="navbar-nav nav-link" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-shopping-cart"></i>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">New Arrivals</a>
+                        <a class="dropdown-item" href="#">Hot Sales</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">VIEW ALL</a>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </div>
+</nav>
+<style>
+    /* #navbarSupportedContent .navbar-nav>.nav-item.active>a {
+        background-color: #868dff;
+        color: white;
+        border-radius: 10px;
+    } */
+    nav{
+        font-family: 'Maven Pro', sans-serif;
+    }
+</style>

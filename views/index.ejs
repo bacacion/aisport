@@ -1,0 +1,263 @@
+<%- include('parts/html_head') %>
+<style>
+    .indexTop {
+        padding-right: 0px;
+        padding-left: 0px;
+    }
+
+    .indexBanner {
+        /* background-image: url('/images/indexWall.jpg');
+        background-repeat: no-repeat; */
+        /* width: 100%;
+        height: 500px; */
+        position: relative;
+        display: block;
+        height: auto;
+        transform:none;
+        left:auto; 
+    }
+
+    .goodTag {
+        font-family: 'Mansalva', cursive;
+        font-size: 50px;
+        text-align: center;
+        line-height: 50px;
+        padding: 80px;
+    }
+
+    .secondBanner {
+        background-image: url('images/index1.jpg');
+        height: 500px;
+        width: 500px;
+        padding: 0px;
+    }
+
+    .secondBannerIntro {
+        width: 70%;
+        /* line-height: 508px; */
+        margin-left: 20px;
+        text-align: center;
+        /* color: #FFC900; */
+        background-color: #E3E2FF;
+        font-family: 'Mansalva', cursive;
+        padding: 50px;
+    }
+
+    .sp {
+        font-size: 25px;
+        font-family: 'Montserrat', sans-serif;
+        margin: 10px;
+        text-align: start;
+        margin-bottom: 30px;
+    }
+
+    .tban {
+        font-size: 25px;
+        font-family: 'Montserrat', sans-serif;
+        /* margin: 10px; */
+        text-align: start;
+        padding-left: 50px;
+        padding-right: 50px;
+        padding-bottom: 30px;
+    }
+
+    /* .secondBannerIntro:hover {
+            text-decoration: underline;
+        } */
+
+    /* div>img {
+        height: 400px;
+        width: 1000px;
+    } */
+
+    .goodFrame {
+        /* background-color: black; */
+        padding: 10px;
+        margin: 5px;
+        height: 450px;
+        width: 326px;
+        border: 3px solid #FF5733;
+        border-radius: 10px;
+    }
+
+    .goodPic {
+        margin: 0;
+        height: 100%;
+        width: 100%;
+        text-align: center;
+    }
+
+    .st1 {
+        border-bottom: 1px solid #F2F3F4;
+        width: 450px;
+        margin: 5px;
+        padding: 5px 10px;
+        font-family: 'Montserrat', cursive;
+    }
+
+    .la1 {
+        width: 80px;
+        float: left;
+        text-align: right;
+        font-size: 25px;
+    }
+
+    .card-img-top {
+        height: auto;
+    }
+</style>
+<%- include('parts/navbar') %>
+<!-- Banner -->
+<div class="indexPage indexBackColor" style="padding-top: 80px">
+    <div class="indexBanner" style="position: relative; left: 2.4%;">
+        <video loop autoplay playsinline src="https://brand.assets.adidas.com/video/upload/q_auto,vc_auto/video/upload/global%20brand%20publishing/Statement/BrandAdidas_1m10s_1920X800_Educate_new.mp4"></video>
+    </div>
+</div>
+<!-- New Arrivals -->
+<div class="indexPage goodTag" id="newArrivals" style="padding-top: 120px">#New Arrivals</div>
+<div class="indexPage" style="padding-bottom: 200px; display: flex;justify-content: center;">
+    <div class="card" style="width: 18rem; margin: 0px 20px;">
+        <img src="/images/indexPreview/index1.jpg" class="card-img-top">
+        <div class="card-body">
+            <h5 class="card-title">Some Pooh Stuffs</h5>
+            <p class="card-text">“You’re braver than you believe, stronger than you seem, and smarter than you think.”
+            </p>
+            <a href="/main/product/10000" class="btn btn-primary">Take A Look</a>
+        </div>
+    </div>
+    <div class="card" style="width: 18rem; margin: 0px 20px;">
+        <img src="/images/indexPreview/index2.jpg" class="card-img-top">
+        <div class="card-body">
+            <h5 class="card-title">Some Pooh Stuffs</h5>
+            <p class="card-text">“Sometimes the smallest things take up the most room in your heart.”
+            </p>
+            <a href="/main/product/10000" class="btn btn-primary">Take A Look</a>
+        </div>
+    </div>
+    <div class="card" style="width: 18rem; margin: 0px 20px;">
+        <img src="/images/indexPreview/index3.jpg" class="card-img-top">
+        <div class="card-body">
+            <h5 class="card-title">Some Pooh Stuffs</h5>
+            <p class="card-text">“If you live to be a hundred, I hope I live to be a hundred minus one day, so that I
+                never have to live a day without you.”
+            </p>
+            <a href="/main/product/10000" class="btn btn-primary">Take A Look</a>
+        </div>
+    </div>
+    <div class="card" style="width: 18rem; margin: 0px 20px;">
+        <img src="/images/indexPreview/index4.jpg" class="card-img-top">
+        <div class="card-body">
+            <h5 class="card-title">Some Pooh Stuffs</h5>
+            <p class="card-text">“Any day spent with you is my favorite day.”
+            </p>
+            <a href="/main/product/10000" class="btn btn-primary">Take A Look</a>
+        </div>
+    </div>
+</div>
+
+<!-- secondBanner -->
+<div class="indexPage">
+
+    <div style="display: flex; justify-content: flex-start;">
+        <div class="secondBanner"></div>
+        <div class="secondBannerIntro">
+
+            <h1 style="margin-bottom: 30px;">All About The Bear</h1>
+            <p class="sp">We asked for your favorite, most quotable Winnie the Pooh quotes and you answered! So we’ve
+                aggregated
+                them here so you can pat yourself on the pack, show your parents that you’ve made it, and check “win at
+                life” off of your to-do list.</p>
+            <p class="sp">Pooh videos, soft toys and other merchandise generate substantial annual revenues for Disney.
+                The size of Pooh stuffed toys ranges from Beanie and miniature to human-sized. In addition to the
+                stylised Disney Pooh, Disney markets Classic Pooh merchandise which more closely resembles E. H.
+                Shepard's illustrations.</p>
+
+        </div>
+    </div>
+
+</div>
+<!-- About Us -->
+<div class="indexBackColor goodTag" id="aboutUs">#About Us</div>
+<div class="indexPage">
+    <div class="tban">
+        In 1991, Stephen Slesinger, Inc. filed a lawsuit against Disney which alleged that Disney had breached their
+        1983 agreement by again failing to accurately report revenue from Winnie the Pooh sales. Under this agreement,
+        Disney was to retain approximately 98% of gross worldwide revenues while the remaining 2% was to be paid to
+        Slesinger. In addition,
+    </div>
+    <div class="tban">
+        the suit alleged that Disney had failed to pay required royalties on all commercial exploitation of the product
+        name. Though the Disney corporation was sanctioned by a judge for destroying forty boxes of evidential
+        documents, the suit was later terminated by another judge when it was discovered that Slesinger's investigator
+        had rummaged through Disney's garbage to retrieve the discarded evidence. Slesinger appealed the termination
+        and, on 26 September 2007, a three-judge panel upheld the lawsuit dismissal.
+    </div>
+</div>
+<div class="indexBackColor" style="padding: 30px;"></div>
+
+<!-- contactUs -->
+<div class="indexBackColor goodTag" id="contactUs"
+    style="padding-bottom: 10px; background-color: #2C3E50; color: #F4D03F;">#Contact Us</div>
+<div class="indexBackColor" style="text-align: center; background-color: #2C3E50; color: #F4D03F;">
+    <div style="display: flex; justify-content: flex-start; padding-bottom: 30px;">
+        <div style="width: 800px; margin: 20px 200px;">
+            <div >
+                <%- include('parts/contentLogo') %>
+            </div>
+            <div style="text-align: start;">
+                <P>
+                    PoohFavor.com 是擁有全球數百萬使用者的領先雲端式開發平台。我們幫助每個人都能輕鬆架構出專業迷人的網頁風采。    促銷您的業務、展示您的藝術、建置網路商店或只是測試一下新的構想。
+                </P>
+                <P>
+                    PoohFavor網站幫手可提供一切元素，讓您製作完全個人化、高品質的免費網站。
+                </P>
+                <p>© 2019-2020 PoohFavor.com, Inc</p>
+            </div>
+        </div>
+        <div>
+            <form action="#" method="GET">
+                <!-- <div class="st1">
+                    <label class="la1" for="name">Name: </label>
+                    <input type="text" class="form-control" name="name" id="name" placeholder="Your name.">
+                </div> -->
+                <div class="st1">
+                    <label class="la1" for="email">Email: </label>
+                    <input type="email" class="form-control" name="email" id="email" placeholder="Your email.">
+                </div>
+                <div class="st1">
+                    <label class="la1" for="subject">Subject: </label>
+                    <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject.">
+                </div>
+                <div class="st1">
+                    <label class="la1" for="content">Content: </label>
+                    <textarea class="form-control" name="content" id="content" cols="10" rows="2"
+                        style="resize:none;"></textarea>
+                </div>
+                <div class="st1" style="border-bottom: none;">
+                    <button type="submit" class="btn btn-warning" style="float: right;">Submit</button>
+                </div>
+            </form>
+        </div>
+
+
+    </div>
+</div>
+
+
+<%- include('parts/scripts') %>
+<script>
+    change = true;
+    function changeColor() {
+        if (change) {
+            $("#indexBanner").css("backgroundColor", "#7FB3D5");
+            change = false;
+        } else {
+            $("#indexBanner").css("backgroundColor", "blueviolet")
+            change = true;
+        };
+        setTimeout(changeColor(), 1500);
+    };
+    $('.indexPage:first').css("paddingRight", 110);
+    $('.indexPage:first').css("paddingLeft", 110);
+</script>
+<%- include('parts/html_foot') %>

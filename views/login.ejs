@@ -1,0 +1,84 @@
+<%- include('parts/html_head') %>
+<%- include('parts/navbar') %>
+<div class="indexBackColor loginPage" style="display: flex; justify-content: center; height: 700px; padding: 20px;">
+    <div style="width: 700px; height:auto; margin: 30px; margin-top: 300px">
+        <div style="font-size:30px">
+            <h2 style="">Welcome to the Ashdown Forest</h2>
+            <div>Oh bother. It's no bother at all to spend some time with Winnie the Pooh, Piglet and Tigger too.</div>
+        </div>
+    </div>
+    <div class="loginForm">
+        <%- include('parts/contentLogo') %>
+        <form action="#" method="POST" style="margin-top: 35px; position: relative; top: 4%;">
+            <% if(locals.flashMsg){ %>
+                <div class="alert alert-danger" role="alert">
+                  <%= flashMsg %>
+                </div>
+                <% } %>
+            <div class="form-group">
+                <label for="email">Email: </label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Your email.">
+            </div>
+            <div class="password">
+                <label for="password">Password: </label>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Your password.">
+            </div>
+            <div style="padding: 30px; width: 100%;">
+                <div class="col-sm-10">
+                    <button type="submit" class="btn btn-primary" style="position: relative; left: 100%; margin-top: 20px;">Sign in</button>
+                </div>
+            </div>
+            <div style="clear: right;"></div>
+            <div style="display: flex; justify-content: center;">
+                <div class="note"><a href="/sign-up"> Sign Up Now !</div>
+                <div class="note"><a href="/forget-password">Forget Password ?</a></div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<%- include('parts/scripts') %>
+
+<style>
+    body {
+        background-image: url('/images/bgimage.jpg');
+        background-repeat: no-repeat;
+        width:100%;
+    }
+
+    .loginForm {
+        width: 500px;
+        height: 680px;
+        /* border: 2px solid #3498DB; */
+        padding: 20px;
+        padding-top: 40px;
+        border-radius: 10px;
+        background-color: rgba(255, 255, 255, 0.9);
+    }
+
+    .loginPage {
+        position: absolute;
+        left: 20%;
+        top: 15%;
+        background-color: rgba(0, 0, 0, 0);
+    }
+
+    label {
+        font-size: 20px;
+    }
+
+    @media (max-width: 500px) {
+        .loginPage {
+            display: none;
+        }
+
+        .loginForm {
+            width: 300px;
+        }
+    }
+    .note {
+        margin: 25px;
+        font-size: 18px;
+    }
+</style>
+<%- include('parts/html_foot') %>

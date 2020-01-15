@@ -1,0 +1,42 @@
+<%- include('parts/html_head') %>
+<style>
+    .main {
+        /* border: 1px solid black; */
+        padding: 20px;
+        /* margin-top: 30px; */
+        /* background-color: blanchedalmond; */
+        background-color: white;
+    }
+    .showGood {
+        display: flex;
+        justify-content: flex-start;
+        border-bottom: 1px solid #F1948A;
+        padding: 20px;
+        font-family: 微軟正黑體;
+    }
+
+    .showGood>div>img {
+        width: 200px;
+        /* height: 200px; */
+    }
+</style>
+<%- include('parts/navbar') %>
+<div class="indexPage" style="padding: 50px;">
+    <div class="container main">
+       <% for(i=0; i<rows.length; i++){ %>
+
+        <div class="showGood">
+            <div><img src="<%= rows[i].pic_out %>"></div>
+            <div style="margin: 10px;margin-left: 30px;">
+                <h4><a href="/main/product/<%= rows[i].good_id %>"><%= rows[i].product_name %></a></h4><br>
+                <p>
+                    <%= rows[i].intro %>
+                </p>
+            </div>
+        </div>
+       
+        <% } %>
+    </div>
+</div>
+<%- include('parts/scripts') %>
+<%- include('parts/html_foot') %>
