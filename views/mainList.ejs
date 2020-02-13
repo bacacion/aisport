@@ -79,8 +79,7 @@
                                 <label for="quantity">Quantity:</label>
                             </div>
                             <div>
-                                <input type="number" name="quantity" id="quantity" class="form-control subb"
-                                    value="1">
+                                <input type="number" name="quantity" id="quantity" class="form-control subb" value="1">
                             </div>
                             <div style="margin-left: 30px;">
                                 <button type="button" class="btn btn-primary" id="add"
@@ -103,5 +102,19 @@
         }, 'json');
         return false;
     }
+
+    $('#add').on('click', addToCart);
+    function addToCart() {
+        console.log('click!!')
+        itemToCart = `good_id=${$('#add').val()}&quantity=${$('#quantity').val()}`
+        $.post('/cart', itemToCart, function (data) {
+            console.log(data);
+        }, 'json');
+        return false;
+    }
+
+
+
+
 </script>
 <%- include('parts/html_foot') %>

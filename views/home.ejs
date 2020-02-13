@@ -1,0 +1,262 @@
+<%- include('parts/html_head') %>
+<style>
+    .indexTop {
+        padding-right: 0px;
+        padding-left: 0px;
+    }
+
+    .indexBanner {
+        /* background-image: url('/images/indexWall.jpg');
+        background-repeat: no-repeat; */
+        /* width: 100%;
+        height: 500px; */
+        position: relative;
+        display: block;
+        height: auto;
+        transform:none;
+        left:auto; 
+    }
+
+    .goodTag {
+        font-family: 'Mansalva', cursive;
+        font-size: 50px;
+        text-align: center;
+        line-height: 50px;
+        padding: 80px;
+    }
+
+    .secondBanner {
+        background-image: url('images/index1.jpg');
+        height: 500px;
+        width: 500px;
+        padding: 0px;
+    }
+
+    .secondBannerIntro {
+        width: 70%;
+        /* line-height: 508px; */
+        margin-left: 20px;
+        text-align: center;
+        /* color: #FFC900; */
+        background-color: #E3E2FF;
+        font-family: 'Mansalva', cursive;
+        padding: 50px;
+    }
+
+    .sp {
+        font-size: 25px;
+        font-family: 'Montserrat', sans-serif;
+        margin: 10px;
+        text-align: start;
+        margin-bottom: 30px;
+    }
+
+    .tban {
+        font-size: 25px;
+        font-family: 'Montserrat', sans-serif;
+        /* margin: 10px; */
+        text-align: start;
+        padding-left: 50px;
+        padding-right: 50px;
+        padding-bottom: 30px;
+    }
+
+    /* .secondBannerIntro:hover {
+            text-decoration: underline;
+        } */
+
+    /* div>img {
+        height: 400px;
+        width: 1000px;
+    } */
+
+    .goodFrame {
+        /* background-color: black; */
+        padding: 10px;
+        margin: 5px;
+        height: 450px;
+        width: 326px;
+        border: 3px solid #FF5733;
+        border-radius: 10px;
+    }
+
+    .goodPic {
+        margin: 0;
+        height: 100%;
+        width: 100%;
+        text-align: center;
+    }
+
+    .st1 {
+        border-bottom: 1px solid #F2F3F4;
+        width: 450px;
+        margin: 5px;
+        padding: 5px 10px;
+        font-family: 'Montserrat', cursive;
+    }
+
+    .la1 {
+        width: 80px;
+        float: left;
+        text-align: right;
+        font-size: 25px;
+    }
+
+    .card-img-top {
+        height: auto;
+    }
+</style>
+<style>
+    .content {
+        border-style: solid;
+        border-width: 5px;
+    }
+
+    .snapshot {
+        height: 200px;
+        color: #aaa;
+        border-style: solid;
+        border-width: 5px;
+    }
+</style>
+<%- include('parts/navbar') %>
+
+
+<body>
+    <div class="container">
+        <div class="jumbotron text-center" style="margin-bottom:0; padding: 5px;">
+            <!-- TODO: video or images -->
+            <video loop autoplay="autoplay" playinline muted style="width: 1080px;">
+            <source src="https://brand.assets.adidas.com/video/upload/q_auto,vc_auto/video/upload/global%20brand%20publishing/Statement/BrandAdidas_1m10s_1920X800_Educate_new.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="content fitness">
+            <!-- TODO: fitness images -->
+            <h3>Works moves</h3>
+            <p>subtitle</p>
+            <div>
+
+                <div class="content-item">
+                    <span>
+                        <a href="#" title="Go fitness" class="btn btn-primary btn-lg" role="button">Go</a>
+                    </span>
+
+                </div>
+            </div>
+
+        </div>
+        <div class="content match">
+            <!-- TODO: match images (tennis)-->
+            <h3>Analysis of league match</h3>
+            <p>subtitle</p>
+            <div>
+                <div class="content-item">
+                    <span>
+                        <a href="#" title="Go analysis" class="btn btn-primary btn-lg" role="button">Go</a>
+                    </span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="container" id="aboutUs" style="margin-top:30px">
+        <h2>About us</h2>
+        <div class="row">
+            <div class="col-sm-3" style="background-color: cornsilk;">
+            <h4>leader</h4>
+            <div class="snapshot">snapshot</div>
+            <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-sm-3" style="background-color: cornsilk;">
+                <h5>Name1</h5>
+                <div class="snapshot">snapshot</div>
+                <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
+            </div>
+            <div class="col-sm-3" style="background-color: cornsilk;">
+                <h5>Name2</h5>
+                <div class="snapshot">snapshot</div>
+                <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
+            </div>
+            <div class="col-sm-3" style="background-color: cornsilk;">
+                <h5>Name3</h5>
+                <div class="snapshot">snapshot</div>
+                <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
+            </div>
+            <div class="col-sm-3" style="background-color: cornsilk;">
+                <h5>Name4</h5>
+                <div class="snapshot">snapshot</div>
+                <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- contactUs -->
+    <div class="indexBackColor goodTag" id="contactUs"
+        style="padding-bottom: 10px; background-color: #2C3E50; color: #F4D03F;">#Contact Us</div>
+    <div class="indexBackColor" style="text-align: center; background-color: #2C3E50; color: #F4D03F;">
+        <div style="display: flex; justify-content: flex-start; padding-bottom: 30px;">
+            <div style="width: 800px; margin: 20px 200px;">
+                <div>
+                    <%- include('parts/contentLogo') %>
+                </div>
+                <div style="text-align: start;">
+                    <P>
+                        PoohFavor.com 是擁有全球數百萬使用者的領先雲端式開發平台。我們幫助每個人都能輕鬆架構出專業迷人的網頁風采。 促銷您的業務、展示您的藝術、建置網路商店或只是測試一下新的構想。
+                    </P>
+                    <P>
+                        PoohFavor網站幫手可提供一切元素，讓您製作完全個人化、高品質的免費網站。
+                    </P>
+                    <p>© 2019-2020 PoohFavor.com, Inc</p>
+                </div>
+            </div>
+            <div>
+                <form action="#" method="GET">
+
+                    <div class="st1">
+                        <label class="la1" for="email">Email: </label>
+                        <input type="email" class="form-control" name="email" id="email" placeholder="Your email.">
+                    </div>
+                    <div class="st1">
+                        <label class="la1" for="subject">Subject: </label>
+                        <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject.">
+                    </div>
+                    <div class="st1">
+                        <label class="la1" for="content">Content: </label>
+                        <textarea class="form-control" name="content" id="content" cols="10" rows="2"
+                            style="resize:none;"></textarea>
+                    </div>
+                    <div class="st1" style="border-bottom: none;">
+                        <button type="submit" class="btn btn-warning" style="float: right;">Submit</button>
+                    </div>
+                </form>
+            </div>
+
+
+        </div>
+    </div>
+
+
+
+    <%- include('parts/scripts') %>
+    <script>
+        change = true;
+        function changeColor() {
+            if (change) {
+                $("#indexBanner").css("backgroundColor", "#7FB3D5");
+                change = false;
+            } else {
+                $("#indexBanner").css("backgroundColor", "blueviolet")
+                change = true;
+            };
+            setTimeout(changeColor(), 1500);
+        };
+        $('.indexPage:first').css("paddingRight", 110);
+        $('.indexPage:first').css("paddingLeft", 110);
+    </script>
+    <%- include('parts/html_foot') %>
+
+</html>

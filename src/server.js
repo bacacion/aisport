@@ -8,7 +8,7 @@ const fs = require('fs');
 const session = require('express-session');
 const moment = require('moment-timezone');
 var favicon = require('serve-favicon');
-const db = require(__dirname + '/db-connect');
+// const db = require(__dirname + '/db-connect');
 var nodemailer = require('nodemailer');
 const emailService = require(__dirname + '/w3cEmail');
 
@@ -44,7 +44,7 @@ app.use((req, res, next) => {
 
 // ---------------Route Start Here---------------
 app.get('/', (req, res) => {
-    res.render('index');
+    res.render('home');
 });
 // ############login&logout############
 app.get('/login', (req, res) => {
@@ -237,7 +237,9 @@ app.post('/remove', (req, res) =>{
     removeItem(req.session.cart.good_id)
     res.redirect('/cart')
 });
-
+app.get('/123', (req, res) => {
+    res.render('../test/openCamera')
+})
 
 
 // 404 要在 routes 的最後面
