@@ -13,8 +13,8 @@
         position: relative;
         display: block;
         height: auto;
-        transform:none;
-        left:auto; 
+        transform: none;
+        left: auto;
     }
 
     .goodTag {
@@ -108,8 +108,10 @@
 </style>
 <style>
     .content {
-        border-style: solid;
-        border-width: 5px;
+        padding: 10px;
+        width: 945px;
+        color: white;
+        opacity: 1;
     }
 
     .snapshot {
@@ -123,81 +125,80 @@
 
 
 <body>
-    <div class="container">
-        <div class="jumbotron text-center" style="margin-bottom:0; padding: 5px;">
-            <!-- TODO: video or images -->
-            <video loop autoplay="autoplay" playinline muted style="width: 1080px;">
-            <source src="https://brand.assets.adidas.com/video/upload/q_auto,vc_auto/video/upload/global%20brand%20publishing/Statement/BrandAdidas_1m10s_1920X800_Educate_new.mp4" type="video/mp4">
-            </video>
-        </div>
-        <div class="content fitness">
-            <!-- TODO: fitness images -->
-            <h3>Works moves</h3>
-            <p>subtitle</p>
-            <div>
+    <div class="jumbotron text-center" style="margin-bottom:0; padding: 5px;">
+        <!-- TODO: video or images -->
+        <video loop autoplay="autoplay" playinline muted style="width: 1890px;">
+            <source
+                src="https://brand.assets.adidas.com/video/upload/q_auto,vc_auto/video/upload/global%20brand%20publishing/Statement/BrandAdidas_1m10s_1920X800_Educate_new.mp4"
+                type="video/mp4">
+        </video>
+        <!-- absolute -->
+        <div style="background-color: black; display: flex; justify-content: center;position: absolute; top: 710px;left: 7px; opacity: 0.6">
+            <div class="content fitness">
+                <!-- TODO: fitness images -->
+                <h3>Works moves</h3>
+                <p>subtitle</p>
+                <div>
+                    <div class="content-item">
+                        <span>
+                            <a href="#" title="Go fitness" class="btn btn-primary btn-lg" role="button">Go</a>
+                        </span>
 
-                <div class="content-item">
-                    <span>
-                        <a href="#" title="Go fitness" class="btn btn-primary btn-lg" role="button">Go</a>
-                    </span>
-
+                    </div>
                 </div>
             </div>
-
-        </div>
-        <div class="content match">
-            <!-- TODO: match images (tennis)-->
-            <h3>Analysis of league match</h3>
-            <p>subtitle</p>
-            <div>
-                <div class="content-item">
-                    <span>
-                        <a href="#" title="Go analysis" class="btn btn-primary btn-lg" role="button">Go</a>
-                    </span>
+            <div class="content match">
+                <!-- TODO: match images (tennis)-->
+                <h3>Analysis of league match</h3>
+                <p>subtitle</p>
+                <div>
+                    <div class="content-item">
+                        <span>
+                            <a href="#" title="Go analysis" class="btn btn-primary btn-lg" role="button">Go</a>
+                        </span>
+                    </div>
                 </div>
             </div>
+        </div>
 
+        <div class="container" id="aboutUs" style="margin-top:30px">
+            <h2>About us</h2>
+            <div class="row">
+                <div class="col-sm-3" style="background-color: cornsilk;">
+                    <h4>leader</h4>
+                    <div class="snapshot">snapshot</div>
+                    <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-sm-3" style="background-color: cornsilk;">
+                    <h5>Name1</h5>
+                    <div class="snapshot">snapshot</div>
+                    <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
+                </div>
+                <div class="col-sm-3" style="background-color: cornsilk;">
+                    <h5>Name2</h5>
+                    <div class="snapshot">snapshot</div>
+                    <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
+                </div>
+                <div class="col-sm-3" style="background-color: cornsilk;">
+                    <h5>Name3</h5>
+                    <div class="snapshot">snapshot</div>
+                    <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
+                </div>
+                <div class="col-sm-3" style="background-color: cornsilk;">
+                    <h5>Name4</h5>
+                    <div class="snapshot">snapshot</div>
+                    <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
+                </div>
+            </div>
         </div>
     </div>
-
-    <div class="container" id="aboutUs" style="margin-top:30px">
-        <h2>About us</h2>
-        <div class="row">
-            <div class="col-sm-3" style="background-color: cornsilk;">
-            <h4>leader</h4>
-            <div class="snapshot">snapshot</div>
-            <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
-            </div>
-
-        </div>
-        <div class="row">
-            <div class="col-sm-3" style="background-color: cornsilk;">
-                <h5>Name1</h5>
-                <div class="snapshot">snapshot</div>
-                <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
-            </div>
-            <div class="col-sm-3" style="background-color: cornsilk;">
-                <h5>Name2</h5>
-                <div class="snapshot">snapshot</div>
-                <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
-            </div>
-            <div class="col-sm-3" style="background-color: cornsilk;">
-                <h5>Name3</h5>
-                <div class="snapshot">snapshot</div>
-                <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
-            </div>
-            <div class="col-sm-3" style="background-color: cornsilk;">
-                <h5>Name4</h5>
-                <div class="snapshot">snapshot</div>
-                <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
-            </div>
-        </div>
-    </div>
-
     <!-- contactUs -->
     <div class="indexBackColor goodTag" id="contactUs"
         style="padding-bottom: 10px; background-color: #2C3E50; color: #F4D03F;">#Contact Us</div>
-    <div class="indexBackColor" style="text-align: center; background-color: #2C3E50; color: #F4D03F;">
+    <div class="indexBackColor" style="text-align: center; background-color: #2C3E50; color: white;">
         <div style="display: flex; justify-content: flex-start; padding-bottom: 30px;">
             <div style="width: 800px; margin: 20px 200px;">
                 <div>
@@ -259,4 +260,4 @@
     </script>
     <%- include('parts/html_foot') %>
 
-</html>
+    </html>
