@@ -18,7 +18,7 @@
     }
 
     .goodTag {
-        font-family: 'Mansalva', cursive;
+        /* font-family: 'Mansalva', cursive; */
         font-size: 50px;
         text-align: center;
         line-height: 50px;
@@ -89,7 +89,7 @@
 
     .st1 {
         border-bottom: 1px solid #F2F3F4;
-        width: 450px;
+        width: 500px;
         margin: 5px;
         padding: 5px 10px;
         font-family: 'Montserrat', cursive;
@@ -109,9 +109,15 @@
 <style>
     .content {
         padding: 10px;
+        padding-top: 30px;
+        height: 150px;
         width: 945px;
         color: white;
         opacity: 1;
+    }
+    .content:hover {
+        color: black;
+        background-color: white;
     }
 
     .snapshot {
@@ -133,31 +139,17 @@
                 type="video/mp4">
         </video>
         <!-- absolute -->
-        <div style="background-color: black; display: flex; justify-content: center;position: absolute; top: 710px;left: 7px; opacity: 0.6">
+        <div
+            style="background-color: black; display: flex; justify-content: center;position: absolute; top: 710px;left: 7px; opacity: 0.6">
             <div class="content fitness">
                 <!-- TODO: fitness images -->
                 <h3>Works moves</h3>
-                <p>subtitle</p>
-                <div>
-                    <div class="content-item">
-                        <span>
-                            <a href="#" title="Go fitness" class="btn btn-primary btn-lg" role="button">Go</a>
-                        </span>
-
-                    </div>
-                </div>
+                <p>Stop eating junks. Do some exercise.</p>
             </div>
             <div class="content match">
                 <!-- TODO: match images (tennis)-->
                 <h3>Analysis of league match</h3>
-                <p>subtitle</p>
-                <div>
-                    <div class="content-item">
-                        <span>
-                            <a href="#" title="Go analysis" class="btn btn-primary btn-lg" role="button">Go</a>
-                        </span>
-                    </div>
-                </div>
+                <p>Be smart. Play hardcore.</p>
             </div>
         </div>
 
@@ -197,8 +189,8 @@
     </div>
     <!-- contactUs -->
     <div class="indexBackColor goodTag" id="contactUs"
-        style="padding-bottom: 10px; background-color: #2C3E50; color: #F4D03F;">#Contact Us</div>
-    <div class="indexBackColor" style="text-align: center; background-color: #2C3E50; color: white;">
+        style="padding-bottom: 10px; background-color: #3D3D3D; color: white;">#Contact Us</div>
+    <div class="indexBackColor" style="text-align: center; background-color: #3D3D3D; color: white;">
         <div style="display: flex; justify-content: flex-start; padding-bottom: 30px;">
             <div style="width: 800px; margin: 20px 200px;">
                 <div>
@@ -214,16 +206,11 @@
                     <p>© 2019-2020 PoohFavor.com, Inc</p>
                 </div>
             </div>
-            <div>
+            <div style="margin-top: 20px;">
                 <form action="#" method="GET">
-
                     <div class="st1">
                         <label class="la1" for="email">Email: </label>
                         <input type="email" class="form-control" name="email" id="email" placeholder="Your email.">
-                    </div>
-                    <div class="st1">
-                        <label class="la1" for="subject">Subject: </label>
-                        <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject.">
                     </div>
                     <div class="st1">
                         <label class="la1" for="content">Content: </label>
@@ -231,7 +218,7 @@
                             style="resize:none;"></textarea>
                     </div>
                     <div class="st1" style="border-bottom: none;">
-                        <button type="submit" class="btn btn-warning" style="float: right;">Submit</button>
+                        <button type="submit" class="btn btn-secondary" style="float: right;">Submit</button>
                     </div>
                 </form>
             </div>

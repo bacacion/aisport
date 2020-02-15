@@ -11,6 +11,7 @@ var favicon = require('serve-favicon');
 // const db = require(__dirname + '/db-connect');
 var nodemailer = require('nodemailer');
 const emailService = require(__dirname + '/w3cEmail');
+var exec = require('child_process').exec;
 
 
 // ---------------Middlewire---------------
@@ -238,9 +239,26 @@ app.post('/remove', (req, res) =>{
     res.redirect('/cart')
 });
 app.get('/123', (req, res) => {
-    res.render('../test/openCamera')
+    var child = exec('python C:\\Users\\User\\Desktop\\Pose_trainer\\main.py --video videos\\plank.jpg', function(error, stdout, stderr){
+        console.info('python C:\\Users\\User\\Desktop\\Pose_trainer\\main.py --video videos\\plank.jpg');
+        console.log(stdout);
+      });
+    res.json('123')
 })
+app.get('/feedback/:text?', (req, res) => {
+    if (req.connection.remoteAddress == '::1') {
+        console.log('localhost send feedback')
+        console.log(req.params.text)        
+        res.json(req.params.text);
+    } else {
+        console.log(req.connection.remoteAddress)
+        console.log(req.params.text)
+        res.render('home');
+    }
 
+
+    
+});
 
 // 404 要在 routes 的最後面
 app.use((req, res) => {
