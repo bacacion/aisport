@@ -107,11 +107,15 @@
     }
 </style>
 <style>
+    * {
+        margin: 0px;
+        padding: 0px;
+    }
     .content {
-        padding: 10px;
+        text-align: center;
         padding-top: 30px;
-        height: 150px;
-        width: 945px;
+        height: 20vh;
+        width: 50vw;
         color: white;
         opacity: 1;
     }
@@ -131,16 +135,16 @@
 
 
 <body>
-    <div class="jumbotron text-center" style="margin-bottom:0; padding: 5px;">
-        <!-- TODO: video or images -->
-        <video loop autoplay="autoplay" playinline muted style="width: 1890px;">
+    <div>
+<!-- TODO: video or images -->
+        <video loop autoplay="autoplay" playinline muted style="width: 100vw;">
             <source
                 src="https://brand.assets.adidas.com/video/upload/q_auto,vc_auto/video/upload/global%20brand%20publishing/Statement/BrandAdidas_1m10s_1920X800_Educate_new.mp4"
                 type="video/mp4">
         </video>
-        <!-- absolute -->
+<!-- absolute -->
         <div
-            style="background-color: black; display: flex; justify-content: center;position: absolute; top: 710px;left: 7px; opacity: 0.6">
+            style="background-color: black; display: flex; justify-content: center;position: absolute; top: 74%; opacity: 0.6">
             <div class="content fitness">
                 <!-- TODO: fitness images -->
                 <h3>Works moves</h3>
@@ -152,7 +156,7 @@
                 <p>Be smart. Play hardcore.</p>
             </div>
         </div>
-
+<!-- About us -->
         <div class="container" id="aboutUs" style="margin-top:30px">
             <h2>About us</h2>
             <div class="row">
@@ -187,7 +191,7 @@
             </div>
         </div>
     </div>
-    <!-- contactUs -->
+<!-- contactUs -->
     <div class="indexBackColor goodTag" id="contactUs"
         style="padding-bottom: 10px; background-color: #3D3D3D; color: white;">#Contact Us</div>
     <div class="indexBackColor" style="text-align: center; background-color: #3D3D3D; color: white;">
@@ -227,23 +231,14 @@
         </div>
     </div>
 
-
-
     <%- include('parts/scripts') %>
     <script>
-        change = true;
-        function changeColor() {
-            if (change) {
-                $("#indexBanner").css("backgroundColor", "#7FB3D5");
-                change = false;
-            } else {
-                $("#indexBanner").css("backgroundColor", "blueviolet")
-                change = true;
-            };
-            setTimeout(changeColor(), 1500);
-        };
-        $('.indexPage:first').css("paddingRight", 110);
-        $('.indexPage:first').css("paddingLeft", 110);
+        $('.fitness').on('click', () => {
+            window.location = "/fitness";
+        })
+        $('.match').on('click', () => {
+            window.location = "/match";
+        })
     </script>
     <%- include('parts/html_foot') %>
 

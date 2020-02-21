@@ -13,8 +13,7 @@ var nodemailer = require('nodemailer');
 const emailService = require(__dirname + '/w3cEmail');
 var exec = require('child_process').exec;
 
-
-// ---------------Middlewire---------------
+// ---------------Middlewire---------------------
 const app = express();
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
@@ -47,6 +46,12 @@ app.use((req, res, next) => {
 app.get('/', (req, res) => {
     res.render('home');
 });
+app.get('/fitness', (req, res) => {
+    res.render('fitness');
+})
+app.get('/match', (req, res) => {
+    res.render('match');
+})
 // ############login&logout############
 app.get('/login', (req, res) => {
     let data = {
@@ -136,6 +141,7 @@ app.post('/sign-up', (req, res) => {
         });
 
 });
+// ############Forget password Email############
 // TODO: email文本設計
 app.get('/forget-password', (req, res) => {
     let data = {
@@ -163,101 +169,22 @@ app.post('/forget-password', (req, res) => {
 });
 
 // ############Content############
-app.get('/main', (req, res) => {
-    sql = "SELECT * FROM `good` LIMIT 10"
-    data = {}
-    // res.render('main');
-    db.queryAsync(sql)
-        .then(results => {
-            data.rows = results
-            return res.render('main', data);
-        })
-        .catch(error => {
-            console.log(error);
-            res.json(error);
-        });
-});
-app.get('/main/product/:id?', (req, res) => {
-    good_id = parseInt(req.params.id);
-    sql = `SELECT * FROM good WHERE good_id=${good_id}`
-    data = {}
-    db.queryAsync(sql)
-        .then(results => {
-            data.rows = results
-            return res.render('mainList', data);
-            // res.json(results)
-        })
-        .catch(error => {
-            console.log(error);
-            res.json(error);
-        });
-});
-app.get('/cart', (req, res) => {
-    // 如果購物車沒東西則直接進入cart，不進入DB查詢.
-    if(Object.keys(res.locals.cart).length == 0){
-        return res.render('cart');
-    }
-    data = Object.keys(res.locals.cart)
-    var target=""
-    for (i = 0; i < data.length; i++) {
-        target = target + `good_id="${data[i]}"`
-        if(i< data.length-1){
-            target = target + " OR "
-        }
-    }    
-    sql = "SELECT * FROM good WHERE " + target;
-    dataAll={};
-    dataAll.data=res.locals.cart;   
-    db.queryAsync(sql)
-        .then(results => {
-            dataAll.rows=results
-            res.render('cart',dataAll)
-        })
-});
-app.post('/cart', (req, res) => {
-    cart = res.locals.cart;
-    setCart = function (propertyName, Value) {
-        return cart[propertyName] = parseInt(Value);
-    };
-    getVal = function (propertyName) {
-        return parseInt(cart[propertyName]);
-    }
-    if (req.body.good_id in cart) {
-        value = getVal(req.body.good_id) + parseInt(req.body.quantity);
-        setCart(req.body.good_id, value);
-    } else {
-        setCart(req.body.good_id, parseInt(req.body.quantity))
-    }
-    req.session.cart = cart;
-    res.json(cart);
-});
-app.post('/remove', (req, res) =>{
-    function removeItem(good_id){
-        delete req.session.cart[good_id]
-    };
-    removeItem(req.session.cart.good_id)
-    res.redirect('/cart')
-});
 app.get('/123', (req, res) => {
-    var child = exec('python C:\\Users\\User\\Desktop\\Pose_trainer\\main.py --video videos\\plank.jpg', function(error, stdout, stderr){
-        console.info('python C:\\Users\\User\\Desktop\\Pose_trainer\\main.py --video videos\\plank.jpg');
-        console.log(stdout);
-      });
+    var child = exec('python ../Pose_trainer/main.py --video videos/plank.jpg', function(error, stdout, stderr){
+        // console.log(stdout);
+    });
     res.json('123')
 })
 app.get('/feedback/:text?', (req, res) => {
     if (req.connection.remoteAddress == '::1') {
-        console.log('localhost send feedback')
-        console.log(req.params.text)        
-        res.json(req.params.text);
-    } else {
-        console.log(req.connection.remoteAddress)
+        console.log('localhost send feedback:')
         console.log(req.params.text)
+        console.log('-------------------------------------')
+        return
+    } else {
+        console.log(req.connection.remoteAddress + 'trying to sand feedback: ' + req.params.text)
         res.render('home');
-    }
-
-
-    
+    }    
 });
 
 // 404 要在 routes 的最後面
@@ -267,5 +194,5 @@ app.use((req, res) => {
     res.send('404 !!!!!!!!!!');
 });
 app.listen(3000, () => {
-    console.log('server start');
+    console.log('server start, port: 3000');
 });
