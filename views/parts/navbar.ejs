@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark navbar-fixed-top">
     <div class="container">
-        <a class="navbar-brand" href="/"><img src="#" style="height: 40px; width: 40px;"></a>
+        <a class="navbar-brand" href="/"><img src="images/tennisWhite.png" style="height: 40px; width: 40px;"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -12,20 +12,24 @@
                     <a class="nav-link" href="/">AI Sports<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Fitness</a>
+                    <a class="nav-link" href="/fitness">Fitness</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#"></a>
+                    <a class="nav-link" href="/match">Match</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Contact</a>
+                    <a class="nav-link" href="/#contactUs">Contact</a>
                 </li>
             </ul>
             <div class="form-inline my-2 my-lg-0" style="width: 200px;">
-                <div class="navbar-nav mr-auto">
-                    <a href="#" style="color: white;">Login</a>
+                <% if(locals.loginUser){ %>
+                <div class="navbar-nav mr-auto" style="font-size: 18px;"><a href="/members"><%= loginUser %></a></div>
+                <div class="navbar-nav mr-auto"><a href="/logout" title="Logout"><i class="fas fa-door-open"></i></a>
                 </div>
+                <% } else { %>
+                <div class="navbar-nav mr-auto"><a href="/login">Login</a></div>
+                <% } %>
                 <div class="navbar-nav mr-auto">
                     <a href="https://www.facebook.com/PoohFavor/">
                         <i class="fab fa-facebook-square"></i>

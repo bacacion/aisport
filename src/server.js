@@ -8,7 +8,7 @@ const fs = require('fs');
 const session = require('express-session');
 const moment = require('moment-timezone');
 var favicon = require('serve-favicon');
-// const db = require(__dirname + '/db-connect');
+const db = require(__dirname + '/db-connect');
 var nodemailer = require('nodemailer');
 const emailService = require(__dirname + '/w3cEmail');
 var exec = require('child_process').exec;
@@ -32,18 +32,19 @@ app.use((req, res, next) => {
     if (req.session.loginUser) {
         res.locals.loginUser = req.session.loginUser;
     }
-    if (req.session.cart) {
-        res.locals.cart = req.session.cart;
-    }
-    // 因為購物車使用運算子in 來判斷，in無法判斷undefined，故res.locals.cart為undefined時將其設為空物件.
-    if (!res.locals.cart) {
-        res.locals.cart = {};
-    }
+    // if (req.session.cart) {
+    //     res.locals.cart = req.session.cart;
+    // }
+    // // 因為購物車使用運算子in 來判斷，in無法判斷undefined，故res.locals.cart為undefined時將其設為空物件.
+    // if (!res.locals.cart) {
+    //     res.locals.cart = {};
+    // }
     next();
 });
 
 // ---------------Route Start Here---------------
 app.get('/', (req, res) => {
+    console.log(req.connection.remoteAddress)
     res.render('home');
 });
 app.get('/fitness', (req, res) => {
