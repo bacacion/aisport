@@ -1,5 +1,6 @@
 //Require 模組
 const express = require('express');
+const app = express();
 const url = require('url');
 const bodyParser = require('body-parser');
 const multer = require('multer');
@@ -7,14 +8,15 @@ const upload = multer({ dest: 'tmp_uploads/' });
 const fs = require('fs');
 const session = require('express-session');
 const moment = require('moment-timezone');
-var favicon = require('serve-favicon');
+// var favicon = require('serve-favicon');
 const db = require(__dirname + '/db-connect');
 var nodemailer = require('nodemailer');
 const emailService = require(__dirname + '/w3cEmail');
 var exec = require('child_process').exec;
+const server = require('http').Server(app);
+const io = require('socket.io')(server);
 
 // ---------------Middlewire---------------------
-const app = express();
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -27,6 +29,7 @@ app.use(session({
         maxAge: 1200000
     }
 }));
+
 // session帶著走.
 app.use((req, res, next) => {
     if (req.session.loginUser) {
@@ -53,7 +56,7 @@ app.get('/fitness', (req, res) => {
 app.get('/match', (req, res) => {
     res.render('match');
 })
-// ############login&logout############
+// #################### login&logout ######################
 app.get('/login', (req, res) => {
     let data = {
         // loginUser: req.session.loginUser || "",
@@ -142,7 +145,7 @@ app.post('/sign-up', (req, res) => {
         });
 
 });
-// ############Forget password Email############
+// ################## Forget password Email ################
 // TODO: email文本設計
 app.get('/forget-password', (req, res) => {
     let data = {
@@ -169,31 +172,115 @@ app.post('/forget-password', (req, res) => {
     };
 });
 
-// ############Content############
+// ####################### Content #########################
 app.get('/123', (req, res) => {
-    var child = exec('python ../Pose_trainer/main.py --video videos/plank.jpg', function(error, stdout, stderr){
+    console.log('processing...')
+    var child = exec('python ../Pose_trainer/main.py --video videos/plank.jpg', function (error, stdout, stderr) {
+
         // console.log(stdout);
+    });
+    res.json('123')
+})
+app.get('/fitness/:text?', (req, res) => {
+    console.log(req.params.text)
+    switch (req.params.text) {
+        case "benchdip":
+            res.render("benchdip")
+            break;
+        case "squat":
+            res.render("squat")
+            break;
+        case "frontraise":
+            res.render("frontraise")
+            break;
+        case "plank":
+            res.render("plank")
+            break;
+        default:
+            res.render("fitness")
+    }
+});
+app.post('/fitness/:pose?', (req, res) => {
+    var messages = [
+        { feedback: "O" }
+    ];
+    if (!req.params.pose) req.params.pose = "biceps";
+    console.log(`processing ${req.params.pose}...`)
+    var comingPose = ` --exercise ${req.params.pose}`;
+    if (req.params.pose == "biceps") {
+        comingPose = "";
+    }
+    var child = exec(`python ../Pose_trainer/main.py --video videos/${req.body.filename}${comingPose}`, function (error, stdout, stderr) {
+        // console.log(stdout);
+ 
     });
     res.json('123')
 })
 app.get('/feedback/:text?', (req, res) => {
     if (req.connection.remoteAddress == '::1') {
-        console.log('localhost send feedback:')
+        console.log('localhost sent a feedback:')
         console.log(req.params.text)
         console.log('-------------------------------------')
-        return
+        // io.on('connection', (socket) =>{
+        //         socket.emit('feedback1', 'dddd')})
+        
+
+
+
+
+        res.json(req.params.text)
     } else {
-        console.log(req.connection.remoteAddress + 'trying to sand feedback: ' + req.params.text)
+        console.log(req.connection.remoteAddress + ' is trying to sand a feedback: ' + req.params.text)
         res.render('home');
-    }    
+    }
 });
+app.get('/feedbackExercise/:text?', (req, res) => {
+    if (req.connection.remoteAddress == '::1') {
+        decodeFeedback = req.params.text.split(',')
+        console.log(decodeFeedback[0])
+        console.log(decodeFeedback[1])
+        console.log(decodeFeedback[2])
+        console.log('--------------------------------------')
+
+    } else {
+        console.log(req.connection.remoteAddress + ' is trying to sand a feedback: ' + req.params.text)
+        res.render('home');
+    }
+});
+app.post('/456', (req, res) => {
+    console.log(req.body.gg)
+    const gg = {
+        "ininder": req.body.gg
+    }
+    res.json(gg)
+});
+
+
+
+
+
+// ###################### Socket.io ######################
+
+var messages=[
+    {name:"Major", message:"HELLO"}
+];
+io.on('connection', (socket) =>{
+    console.log('a user connected')
+    socket.emit('allMessage', messages)
+    socket.on('message', (msg) => {
+        console.log('user said:' + msg)
+        socket.emit('feedback1', 'dddd')
+        // msglist.push(msg)
+    })
+})
+
 
 // 404 要在 routes 的最後面
 app.use((req, res) => {
     res.type('text/plain');
     res.status(404);
-    res.send('404 !!!!!!!!!!');
+    res.send('404 !');
 });
-app.listen(3000, () => {
+server.listen(3000, () => {
     console.log('server start, port: 3000');
 });
