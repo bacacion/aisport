@@ -1,13 +1,58 @@
 <%- include('parts/html_head') %>
+<style>
+    * {
+        margin: 0px;
+        padding: 0px;
+    }
+
+    video {
+        height: 40vh;
+
+    }
+    div {
+        color: white;
+        font-size: 20px;
+        font-family: "微軟正黑體", sans-serif;
+    }
+    img {
+        width: 60vw;
+    }
+</style>
 <%- include('parts/navbar') %>
-
-<h1>match</h1>
-<form>
-    <div class="form-group">
-        <label for="exampleFormControlFile1">Example file input</label>
-        <input type="file" class="form-control-file" id="exampleFormControlFile1" accept=".mp4">
+<div style="background-color: #17202A; height: 100%; width: 100%; padding: 5vh;">
+    <div class="container">
+        <div style="font-size: 40px; margin-bottom: 30px;">Match Analytics</div>
+        <div style="display: flex; justify-content: start;">
+            <div style="margin:0 10px;">
+                <div>原始影片</div>
+                <video autoplay muted src="/videos/ori.mp4"></video>
+                <div>揮拍動作分析</div>
+                <video autoplay muted src="/videos/yolo.mp4"></video>
+            </div>
+            <div style="margin:0 10px;">
+                <div>球路抓取</div>
+                <video autoplay muted src="/videos/ball.mp4"></video>
+                <div>球與選手位置</div>
+                <video autoplay muted src="/videos/3p.mp4"></video>
+            </div>
+        </div>
+        <div style="margin-top: 50px;">
+            <img src="/images/speed.png" alt="">
+        </div>
+        <div style="margin-top: 50px;">
+            <img src="/images/speedAndde.png" alt="">
+        </div>
+        <div class="container" style="padding: 30px; font-size: 18px;">
+            <ul id="messages" style="font-size: 20px;">
+                <li>to right max speed: 171 km/hr.</li>
+                <li>to right average speed: 32.57 km/hr.</li>
+                <li>to left max speed: 203 km/hr.</li>
+                <li>to left average speed: 36.17 km/hr.</li>
+                <li>left move is faster than right about 11%.</li>
+            </ul>
+        </div>
     </div>
-</form>
 
+</div>
 <%- include('parts/scripts') %>
 <%- include('parts/html_foot') %>

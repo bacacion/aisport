@@ -16,6 +16,7 @@ var exec = require('child_process').exec;
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
 
+
 // ---------------Middlewire---------------------
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
@@ -29,7 +30,7 @@ app.use(session({
         maxAge: 1200000
     }
 }));
-
+io.on('connection', () => {});
 // session帶著走.
 app.use((req, res, next) => {
     if (req.session.loginUser) {
@@ -173,16 +174,7 @@ app.post('/forget-password', (req, res) => {
 });
 
 // ####################### Content #########################
-app.get('/123', (req, res) => {
-    console.log('processing...')
-    var child = exec('python ../Pose_trainer/main.py --video videos/plank.jpg', function (error, stdout, stderr) {
-
-        // console.log(stdout);
-    });
-    res.json('123')
-})
 app.get('/fitness/:text?', (req, res) => {
-    console.log(req.params.text)
     switch (req.params.text) {
         case "benchdip":
             res.render("benchdip")
@@ -201,19 +193,16 @@ app.get('/fitness/:text?', (req, res) => {
     }
 });
 app.post('/fitness/:pose?', (req, res) => {
-    var messages = [
-        { feedback: "O" }
-    ];
-    if (!req.params.pose) req.params.pose = "biceps";
-    console.log(`processing ${req.params.pose}...`)
+    if (!req.params.pose){
+        req.params.pose = "biceps";
+    } 
+    console.log(`processing ${req.params.pose}...`)        
     var comingPose = ` --exercise ${req.params.pose}`;
     if (req.params.pose == "biceps") {
         comingPose = "";
     }
-    var child = exec(`python ../Pose_trainer/main.py --video videos/${req.body.filename}${comingPose}`, function (error, stdout, stderr) {
-        // console.log(stdout);
- 
-    });
+    io.emit('processing', '1')
+    var child = exec(`python ../Pose_trainer/main.py --video videos/${req.body.filename}${comingPose}`, () => {});
     res.json('123')
 })
 app.get('/feedback/:text?', (req, res) => {
@@ -221,12 +210,6 @@ app.get('/feedback/:text?', (req, res) => {
         console.log('localhost sent a feedback:')
         console.log(req.params.text)
         console.log('-------------------------------------')
-        // io.on('connection', (socket) =>{
-        //         socket.emit('feedback1', 'dddd')})
-        
-
-
-
 
         res.json(req.params.text)
     } else {
@@ -236,14 +219,24 @@ app.get('/feedback/:text?', (req, res) => {
 });
 app.get('/feedbackExercise/:text?', (req, res) => {
     if (req.connection.remoteAddress == '::1') {
-        decodeFeedback = req.params.text.split(',')
-        console.log(decodeFeedback[0])
-        console.log(decodeFeedback[1])
-        console.log(decodeFeedback[2])
-        console.log('--------------------------------------')
-
+        decodeFeedback = req.params.text.split(',');
+        // benchdip消耗熱量
+        calorie=0.39;        
+        
+        // console.log('feedbackMessage', `姿勢建議: ${decodeFeedback[0]}`);
+        // console.log('feedbackMessage', `動作次數: ${decodeFeedback[1]}`);
+        // console.log('feedbackMessage', `運動時間: ${decodeFeedback[2]}`); 
+        
+        io.emit('processing', '0')
+        io.emit('feedbackMessage', `姿勢建議: ${decodeFeedback[0]}`);
+        io.emit('feedbackMessage', `動作次數: ${decodeFeedback[1]}`);
+        io.emit('feedbackMessage', `運動時間: ${decodeFeedback[2]}`);
+        io.emit('feedbackMessage', `本次訓練預估消耗熱量: ${decodeFeedback[1]*calorie}`)
+        io.emit('imageOn', '1')
+        console.log('emit done')
+        res.json('done')
     } else {
-        console.log(req.connection.remoteAddress + ' is trying to sand a feedback: ' + req.params.text)
+        console.log(req.connection.remoteAddress + ' is trying to sand a feedback: ' + req.params.text);
         res.render('home');
     }
 });
@@ -254,26 +247,16 @@ app.post('/456', (req, res) => {
     }
     res.json(gg)
 });
+app.get('/123', (req, res) => {
+   io.emit('chat message', '12333')
+})
 
 
 
 
 
 // ###################### Socket.io ######################
-
-var messages=[
-    {name:"Major", message:"HELLO"}
-];
-io.on('connection', (socket) =>{
-    console.log('a user connected')
-    socket.emit('allMessage', messages)
-    socket.on('message', (msg) => {
-        console.log('user said:' + msg)
-        socket.emit('feedback1', 'dddd')
-        // msglist.push(msg)
-    })
-})
-
+io.on('connection', () => {});
 
 // 404 要在 routes 的最後面
 app.use((req, res) => {

@@ -19,15 +19,16 @@
     }
 
     .videoOutput {
-        background-color: blueviolet;
+        background-color: #17202A;
         width: 40vw;
         height: 100%;
     }
 
     .outputTable {
-        background-color: burlywood;
+        background-color: #17202A;
         width: 40vw;
         height: 100%;
+        color: white;
     }
 
     .actionBox {
@@ -35,7 +36,7 @@
         border-bottom: black solid 1px;
         background-color: #17202A;
         width: 100%;
-        height: 15%;
+        height: 15%; 
     }
 
     .actionBox:hover {
@@ -43,8 +44,6 @@
     }
 
     .uploadBox {
-        border-top: black solid 1px;
-        border-bottom: black solid 1px;
         background-color: #17202A;
         width: 100%;
         height: 15%;
@@ -60,27 +59,20 @@
 <div class="mainBox">
     <!-- 左側目錄 -->
     <div class="leftmenu">
-        <div class="uploadBox" style="color: white; font-size:20px; padding:16px; padding-left: 60px;">
-            <form name="form1">
-                <div class="form-group">
-                    <label for="exampleFormControlFile1">Upload your exercise video!</label>
-                    <input onchange="previewFile()" type="file" class="form-control-file" id="exampleFormControlFile1" accept=".mp4">
-                </div>
-            </form>
-        </div>
+        <div class="uploadBox" style="color: white; font-size:20px; padding:16px; padding-left: 60px;"></div>
         <div class="actionBox" style="background-image: url('/images/biceps.png');">
             <div class="poseText">BICEPS</div>
         </div>
-        <div class="actionBox" style="background-image: url('/images/biceps.png');">
+        <div class="actionBox" style="background-image: url('/images/benchdip.jpg');">
             <div class="poseText">BENCH DIP</div>
         </div>
-        <div class="actionBox" style="background-image: url('/images/biceps.png');">
+        <div class="actionBox" style="background-image: url('/images/plank.jpg');">
             <div class="poseText">PLANK</div>
         </div>
-        <div class="actionBox" style="background-image: url('/images/biceps.png');">
+        <div class="actionBox" style="background-image: url('/images/squat.jpg');">
             <div class="poseText">SQUAT</div>
         </div>
-        <div class="actionBox" style="background-image: url('/images/biceps.png');">
+        <div class="actionBox" style="background-image: url('/images/frontraise.jpg');">
             <div class="poseText">FRONT RAISE</div>
         </div>
         <div style="border-top: black solid 1px;
@@ -91,18 +83,36 @@
     </div>
     <!-- 展示區域 -->
     <div class="videoOutput">
-        <video autoplay="autoplay" playinline muted style="width: 40vw;"></video>
+        <div class="uploadBox" style="color: white; font-size:20px; padding:16px; padding-left: 200px;">
+            <form name="form1">
+                <div class="form-group">
+                    <label for="exampleFormControlFile1">Upload your exercise video!</label>
+                    <input onchange="previewFile()" type="file" class="form-control-file" id="exampleFormControlFile1"
+                        accept=".mp4" style="font-family: 微軟正黑體, sans-serif;">
+                </div>
+            </form>
+        </div>
+        <video autoplay="autoplay" loop playinline muted style="width: 40vw;"></video>
     </div>
     <!-- 計算資料 -->
     <div class="outputTable">
-
+        <div class="container" style="padding: 30px; font-size: 18px; display: none;" id="processing">
+            <ul>processing video...</ul>
+        </div>
+        <div class="container" style="padding: 30px; font-size: 18px;">
+            <ul id="messages"></ul>
+        </div>
+        <div class="container" style="padding: 30px; font-size: 18px;display: none;" id="resultIMG">
+            <p>手臂角度紀錄：</p>
+            <img src="/images/demoBenchDip.png" alt="">
+        </div>
     </div>
 </div>
 <div style="height: 100%;"></div>
 
 
-<div class="safa">asdasdas</div>
-<div id="www">5555555</div>
+<!-- <div class="safa">asdasdas</div>
+<div id="www">5555555</div> -->
 
 
 <%- include('parts/scripts') %>
@@ -110,45 +120,46 @@
 
     $('.poseText').on('click', (event) => {
         dest = event.target.innerHTML.toLowerCase().replace(/\s+/g, "")
-        document.location.href=`http://192.168.36.30:3000/fitness/${dest}`;
+        document.location.href = `http://192.168.36.30:3000/fitness/${dest}`;
     });
-    $('#www').on('click', function() {
+    $('#www').on('click', function () {
         console.log('sd')
         $.post('/456', "gg=ininder", function (data) {
-        $('.safa').text(data.ininder)
-    }, 'json');
+            $('.safa').text(data.ininder)
+        }, 'json');
     })
 
-    // preview video
+    // selected video
     function previewFile() {
-            var preview = document.querySelector('video');
-            var file = document.querySelector('input[type=file]').files[0];
-            var reader = new FileReader();
-
-            reader.addEventListener("load", function () {
-                preview.src = reader.result;
-            }, false);
-
-            if (file) {
-                reader.readAsDataURL(file);
-            }
-            $.post('/fitness/benchdip', $(document.form1).serialize(), function (data) {
-            msg_bar_div.removeClass('alert-success');
-            msg_bar_div.removeClass('alert-danger');
-            // console.log(document.form1);
-            if (data.success) {
-                msg_bar_div.text('Welcome to the Ashdown Forest!');
-                msg_bar_div.addClass('alert-success');
-                setTimeout(function () {
-                    location.href = '/login';
-                }, 2000);
-            } else {
-                msg_bar_div.text(data.errorMsg);
-                msg_bar_div.addClass('alert-danger');
-                btn.show();
-            }
-            msg_bar.show();
-        }, 'json');
+        var preview = document.querySelector('video');
+        var file = document.querySelector('input[type=file]').files[0];
+        var reader = new FileReader();
+        reader.addEventListener("load", function () {
+            preview.src = reader.result;
+        }, false);
+        if (file) {
+            reader.readAsDataURL(file);
         }
+        $.post('/fitness/frontraise', `filename=${$('input').val().split('\\')[2]}`, function (data) {
+            console.log()
+        }, 'json');
+    }
+
+    // Socket.io
+    var socket = io();
+    socket.on('feedbackMessage', function (msg) {
+        $('#messages').append($('<li>').text(msg));
+        window.scrollTo(0, document.body.scrollHeight);
+    });
+    socket.on('imageOn', function (msg) {
+        $('#resultIMG').css('display', 'block')
+    });
+    socket.on('processing', function (msg) {
+        if (msg == '1') {
+            $('#processing').css('display', 'block')
+        } else {
+            $('#processing').css('display', 'none')
+        }
+    })
 </script>
 <%- include('parts/html_foot') %>
