@@ -111,6 +111,7 @@
         margin: 0px;
         padding: 0px;
     }
+
     .content {
         text-align: center;
         padding-top: 30px;
@@ -119,6 +120,7 @@
         color: white;
         opacity: 1;
     }
+
     .content:hover {
         color: black;
         background-color: white;
@@ -136,13 +138,13 @@
 
 <body>
     <div>
-<!-- TODO: video or images -->
+        <!-- TODO: video or images -->
         <video loop autoplay="autoplay" muted style="width: 100vw;">
             <source
                 src="https://brand.assets.adidas.com/video/upload/q_auto,vc_auto/video/upload/global%20brand%20publishing/Statement/BrandAdidas_1m10s_1920X800_Educate_new.mp4"
                 type="video/mp4">
         </video>
-<!-- absolute -->
+        <!-- absolute -->
         <div
             style="background-color: black; display: flex; justify-content: center;position: absolute; top: 74%; opacity: 0.6">
             <div class="content fitness">
@@ -156,7 +158,7 @@
                 <p>Be smart. Play hardcore.</p>
             </div>
         </div>
-<!-- About us -->
+        <!-- About us -->
         <!-- <div class="container" id="aboutUs" style="margin-top:30px">
             <h2>About us</h2>
             <div class="row">
@@ -191,55 +193,70 @@
             </div>
         </div>
     </div> -->
-<!-- contactUs -->
-    <div class="indexBackColor goodTag" id="contactUs"
-        style="padding-bottom: 10px; background-color: #3D3D3D; color: white;">#Contact Us</div>
-    <div class="indexBackColor" style="text-align: center; background-color: #3D3D3D; color: white;">
-        <div style="display: flex; justify-content: flex-start; padding-bottom: 30px;">
-            <div style="width: 800px; margin: 20px 200px;">
-                <div>
-                    <%- include('parts/contentLogo') %>
+        <!-- contactUs -->
+        <div class="indexBackColor goodTag" id="contactUs"
+            style="padding-bottom: 10px; background-color: #3D3D3D; color: white;">#Contact Us</div>
+        <div class="indexBackColor" style="text-align: center; background-color: #3D3D3D; color: white;">
+            <div style="display: flex; justify-content: flex-start; padding-bottom: 30px;">
+                <div style="width: 800px; margin: 20px 200px;">
+                    <div>
+                        <%- include('parts/contentLogo') %>
+                    </div>
+                    <div style="text-align: start; font-family: 微軟正黑體;">
+                        <P>
+                            AiSport.com 是擁有全球數百萬使用者的領先AI教練平台。我們幫助每個人都能輕鬆在運動與球技上舉得進步。
+                            增強你的爆發力、建立良好的飲食習慣、分析你的競爭對手。
+                        </P>
+                        <P>
+                            AiSport網站幫手可提供一切元素，讓您製作完全個人化、高品質的運動菜單。
+                        </P>
+                        <p>© 2019-2020 AiSport.com, Inc</p>
+                    </div>
                 </div>
-                <div style="text-align: start;">
-                    <P>
-                        PoohFavor.com 是擁有全球數百萬使用者的領先雲端式開發平台。我們幫助每個人都能輕鬆架構出專業迷人的網頁風采。 促銷您的業務、展示您的藝術、建置網路商店或只是測試一下新的構想。
-                    </P>
-                    <P>
-                        PoohFavor網站幫手可提供一切元素，讓您製作完全個人化、高品質的免費網站。
-                    </P>
-                    <p>© 2019-2020 PoohFavor.com, Inc</p>
+                <div style="margin-top: 20px;">
+                    <form action="#" method="GET">
+                        <div class="st1">
+                            <label class="la1" for="email">Email: </label>
+                            <input type="email" class="form-control" name="email" id="email" placeholder="Your email.">
+                        </div>
+                        <div class="st1">
+                            <label class="la1" for="content">Content: </label>
+                            <textarea class="form-control" name="content" id="content" cols="10" rows="2"
+                                style="resize:none;"></textarea>
+                        </div>
+                        <div class="st1" style="border-bottom: none;">
+                            <button type="submit" class="btn btn-secondary" style="float: right;">Submit</button>
+                        </div>
+                    </form>
                 </div>
-            </div>
-            <div style="margin-top: 20px;">
-                <form action="#" method="GET">
-                    <div class="st1">
-                        <label class="la1" for="email">Email: </label>
-                        <input type="email" class="form-control" name="email" id="email" placeholder="Your email.">
-                    </div>
-                    <div class="st1">
-                        <label class="la1" for="content">Content: </label>
-                        <textarea class="form-control" name="content" id="content" cols="10" rows="2"
-                            style="resize:none;"></textarea>
-                    </div>
-                    <div class="st1" style="border-bottom: none;">
-                        <button type="submit" class="btn btn-secondary" style="float: right;">Submit</button>
-                    </div>
-                </form>
-            </div>
 
 
+            </div>
         </div>
-    </div>
+        <!-- pre-loading -->
+        <div style="margin:0 10px; display: none;">
+            <div style="margin:0 10px; display: none;">
+                <div>原始影片</div>
+                <video autoplay muted src="/videos/ori.mp4"></video>
+                <div>揮拍動作分析</div>
+                <video autoplay muted src="/videos/yolo.mp4"></video>
+            </div>
+            <div style="margin:0 10px;">
+                <div>球路抓取</div>
+                <video autoplay muted src="/videos/ball.mp4"></video>
+                <div>球與選手位置</div>
+                <video autoplay muted src="/videos/3p.mp4"></video>
+            </div>
+        </div>
+        <%- include('parts/scripts') %>
+        <script>
+            $('.fitness').on('click', () => {
+                window.location = "/fitness";
+            })
+            $('.match').on('click', () => {
+                window.location = "/match";
+            })
+        </script>
+        <%- include('parts/html_foot') %>
 
-    <%- include('parts/scripts') %>
-    <script>
-        $('.fitness').on('click', () => {
-            window.location = "/fitness";
-        })
-        $('.match').on('click', () => {
-            window.location = "/match";
-        })
-    </script>
-    <%- include('parts/html_foot') %>
-
-    </html>
+        </html>

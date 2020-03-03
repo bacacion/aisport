@@ -231,7 +231,7 @@ app.get('/feedbackExercise/:text?', (req, res) => {
         io.emit('feedbackMessage', `姿勢建議: ${decodeFeedback[0]}`);
         io.emit('feedbackMessage', `動作次數: ${decodeFeedback[1]}`);
         io.emit('feedbackMessage', `運動時間: ${decodeFeedback[2]}`);
-        io.emit('feedbackMessage', `本次訓練預估消耗熱量: ${decodeFeedback[1]*calorie}`)
+        io.emit('feedbackMessage', `本次訓練預估消耗熱量: ${decodeFeedback[1]*calorie} kcal`)
         io.emit('imageOn', '1')
         console.log('emit done')
         res.json('done')
